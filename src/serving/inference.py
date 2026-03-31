@@ -32,7 +32,7 @@ import mlflow
 # IMPORTANT: This path is set during Docker container build
 # In development: uses local MLflow artifacts
 # In production: uses model copied to container at build time
-MODEL_DIR = "/app/model"
+MODEL_DIR = "src/serving/model/2ac205f95a264d49b964ab362fe5f4e6/artifacts/model"
 
 try:
     # Load the trained XGBoost model in MLflow pyfunc format
@@ -45,7 +45,7 @@ except Exception as e:
     try:
         # Try loading from local MLflow tracking
         import glob
-        local_model_paths = glob.glob("./mlruns/*/*/artifacts/model")
+        local_model_paths = glob.glob("src/serving/model/2ac205f95a264d49b964ab362fe5f4e6/artifacts")
         if local_model_paths:
             latest_model = max(local_model_paths, key=os.path.getmtime)
             model = mlflow.pyfunc.load_model(latest_model)
@@ -60,7 +60,8 @@ except Exception as e:
 # CRITICAL: Load the exact feature column order used during training
 # This ensures the model receives features in the expected order
 try:
-    feature_file = os.path.join(MODEL_DIR, "feature_columns.txt")
+    # feature_columns.txt is in artifacts/, not in artifacts/model/
+    feature_file = os.path.normpath(os.path.join(MODEL_DIR, "..", "feature_columns.txt"))
     with open(feature_file) as f:
         FEATURE_COLS = [ln.strip() for ln in f if ln.strip()]
     print(f"✅ Loaded {len(FEATURE_COLS)} feature columns from training")
