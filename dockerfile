@@ -4,8 +4,20 @@ FROM python:3.11-slim
 # 2. Set working directory inside the container
 WORKDIR /app
 
+
+# Install system dependencies needed for xgboost, pandas, scikit-learn
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libgomp1 \
+    curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # 3. Copy only dependency file first (for Docker caching)
 COPY requirements.txt .
+
+# Upgrade pip and install Python dependencies
+RUN python -m pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 4. Install Python dependencies (add curl if you use MLflow local tracking URI)
 RUN pip install --upgrade pip \
