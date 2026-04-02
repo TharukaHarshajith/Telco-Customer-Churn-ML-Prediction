@@ -23,6 +23,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 # === HEALTH CHECK ENDPOINT ===
 # CRITICAL: Required for AWS Application Load Balancer health checks
 @app.get("/")
