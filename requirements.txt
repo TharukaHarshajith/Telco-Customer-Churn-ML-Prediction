@@ -7,6 +7,7 @@ pydantic==2.12.5
 python-multipart==0.0.22
 #aiofiles==24.1.0
 python-dotenv==1.2.2
+mlflow==2.8.1
 
 # ML/Data
 numpy==1.26.4
