@@ -15,9 +15,7 @@ RUN apt-get update && apt-get install -y \
 # 3. Copy only dependency file first (for Docker caching)
 COPY requirements.txt .
 
-# Upgrade pip and install Python dependencies
-RUN python -m pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+
 
 # 4. Install Python dependencies (add curl if you use MLflow local tracking URI)
 RUN pip install --upgrade pip \
@@ -39,7 +37,7 @@ COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/preprocessing.
 # make "serving" and "app" importable without the "src." prefix
 # ensures logs are shown in real-time (no buffering).
 # lets you import modules using from app... instead of from src.app....
-ENV PYTHONUNBUFFERED=1 \ 
+ENV PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app/src
 
 # 6. Expose FastAPI port
