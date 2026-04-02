@@ -208,5 +208,5 @@ demo = gr.Interface(
 app = gr.mount_gradio_app(
     app,           # FastAPI application instance
     demo,          # Gradio interface
-    path="/ui"     # URL path where Gradio will be accessible
+    path="/"     # URL path where Gradio will be accessible
 )
