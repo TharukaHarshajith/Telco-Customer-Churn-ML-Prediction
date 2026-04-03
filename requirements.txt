@@ -2,7 +2,8 @@
 fastapi==0.135.2
 uvicorn==0.23.2
 gradio==6.10.0
-huggingface_hub==0.19.3
+#huggingface_hub==0.19.3
+huggingface_hub==1.8.0
 pydantic==2.12.5
 python-multipart==0.0.22
 #aiofiles==24.1.0
