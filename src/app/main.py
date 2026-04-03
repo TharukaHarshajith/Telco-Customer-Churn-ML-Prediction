@@ -28,12 +28,12 @@ def health():
     return {"status": "ok"}
 # === HEALTH CHECK ENDPOINT ===
 # CRITICAL: Required for AWS Application Load Balancer health checks
-@app.get("/")
-def root():
-    """
-    Health check endpoint for monitoring and load balancer health checks.
-    """
-    return {"status": "ok"}
+# @app.get("/")
+# def root():
+#     """
+#     Health check endpoint for monitoring and load balancer health checks.
+#     """
+#     return {"status": "ok"}
 
 # === REQUEST DATA SCHEMA ===
 # Pydantic model for automatic validation and API documentation
