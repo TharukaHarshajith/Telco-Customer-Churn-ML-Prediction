@@ -35,6 +35,12 @@ def health():
 #     """
 #     return {"status": "ok"}
 
+from fastapi.responses import RedirectResponse
+
+@app.get("/")
+def root():
+    return RedirectResponse(url="/ui")
+
 # === REQUEST DATA SCHEMA ===
 # Pydantic model for automatic validation and API documentation
 class CustomerData(BaseModel):
@@ -208,5 +214,5 @@ demo = gr.Interface(
 app = gr.mount_gradio_app(
     app,           # FastAPI application instance
     demo,          # Gradio interface
-    path="/"     # URL path where Gradio will be accessible
+    path="/ui"     # URL path where Gradio will be accessible
 )
