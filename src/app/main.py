@@ -185,11 +185,11 @@ demo = gr.Interface(
         gr.Number(label="Total Charges ($)", value=85.0, minimum=0, maximum=10000),
     ],
     outputs=gr.Textbox(label="Churn Prediction", lines=2),
-    title="🔮 Telco Customer Churn Predictor",
+    title="Customer Retention Prediction System",
     description="""
-    **Predict customer churn probability using machine learning**
+    **Predict customer retention probability using machine learning**
     
-    Fill in the customer details below to get a churn prediction. The model uses XGBoost trained on 
+    Fill in the customer details below to get a retention prediction. The model uses XGBoost trained on 
     historical telecom customer data to identify customers at risk of churning.
     
     💡 **Tip**: Month-to-month contracts with fiber optic internet and electronic check payments 
