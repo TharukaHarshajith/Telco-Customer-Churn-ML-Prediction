@@ -228,8 +228,3 @@ MIT License
 
 ---
 
-If you want, I can also:
-
-* Add **badges (GitHub, Docker, MLflow, AWS)**
-* Create a **README banner image**
-* Or tailor this specifically for **GitHub portfolio / recruiters**
