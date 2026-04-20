@@ -219,6 +219,6 @@ def predict(input_dict: dict) -> str:
     # === STEP 4: Convert to Business-Friendly Output ===
     # Convert binary prediction (0/1) to actionable business language
     if result == 1:
-        return "Likely to churn"      # High risk - needs intervention
+        return "Likely to retain"      # High risk - needs intervention
     else:
-        return "Not likely to churn"  # Low risk - maintain normal service
+        return "Not likely to retain"  # Low risk - maintain normal service
